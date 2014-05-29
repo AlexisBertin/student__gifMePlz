@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+	<title>GifMe | Examen PHP</title>
+
+    <meta charset="utf-8" />
+    <meta name="title" content="Alexis Bertin | Développeur Front End" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Alexis Bertin Portfolio. Front End developer." />
+    <meta name="author" content="Alexis Bertin" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="revised" content="Alexis Bertin, Mai 2014" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" /> -->
+
+    <!-- <link rel="stylesheet" href="assets/css/foundation.css" /> -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+     
+    <script type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="//use.typekit.net/gib4jtx.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript">
+
+       $(window).load(function() {
+ 
+          $('#photos a').click(function(e){
+             return false;
+          });
+
+          /* --- Show Cam --- */
+
+             var openCam = function(){
+                $('#happyFace').die("click",openCam);
+                $('.close').live("click",closeCam);
+
+                $('#happyFace img').fadeOut(200, function(){
+                   $('#happyFace').css({
+                      'height':'430px',
+                      'width':'540px',
+                      'cursor':'default'
+                   });
+                   $('#content').css({
+                      'height':'540px'
+                   })
+                   $('#camera').delay(300).fadeIn(200);    
+                });
+             };
+
+
+             var closeCam = function(){
+                $('#happyFace').live("click",openCam);
+                $('.close').die("click",closeCam);
+
+                $('#camera').fadeOut(200).css({'display':'none'});
+                   $('#happyFace').css({
+                      'height':'47px',
+                      'width':'47px',
+                      'cursor':'pointer'
+                   });
+                   $('#content').css({
+                      'height':'180px'
+                   });
+                   $('#happyFace img').fadeIn(200);
+             };
+
+             $('#happyFace').live("click",openCam);
+              
+
+
+       });
+
+    </script>
+
+   
+</head>
+<body class="home">
+
+        <video autoplay loop muted poster="assets/ocean/ocean.png" id="bgvid">
+            <source src="assets/ocean/ocean.webm" type="video/webm">
+            <source src="assets/ocean/ocean.mp4" type="video/mp4">
+        </video>
+
+	<section class="shoot row">
+        <div id="photos"></div>
+
+       <div id="happyFace">
+               <img src="../assets/img/happyFace.png" alt="smiley type :-)" />
+               <div id="camera">
+                   <div id="screen"></div>
+                   <div id="buttons">
+                     <div class="buttonPane">
+                        <a id="shootButton" class="normLink" href="" class="blueButton">Shoot !</a>
+                     </div>
+                   </div>
+               </div>
+            </div>
+
+	</section>
+
+<!-- 
+    <section class="galery row">
+
+
+    </section>
+ -->
+    <script src="assets/webcam/webcam.js"></script>
+    <script src="assets/js/shoot.js"></script>
+    
+</body>
+</html>
