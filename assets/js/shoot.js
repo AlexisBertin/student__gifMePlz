@@ -54,7 +54,7 @@ $(document).ready(function(){
 	$('#shootButton').click(function(){
 		var x = 0;
 		var newShot = setInterval(function(){
-			if(x<shotNumber){
+			if(x<8){
 				if(!shootEnabled){
 					return false;
 				}
@@ -64,8 +64,7 @@ $(document).ready(function(){
 					webcam.upload();
 					webcam.reset();
 					togglePane();
-				},100);
-				webcam.reset();
+				},200);
 				x++;
 			} else {
 				window.clearInterval(newShot);
