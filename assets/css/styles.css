@@ -48,6 +48,7 @@ body {
 
 /* ---------------- Home ---------------- */
 .home .start {
+  display: none;
   top: 0;
   text-align: center;
   		/*background: url('../img/bg_home.jpg') no-repeat center center fixed #000; 
@@ -92,9 +93,45 @@ body {
         transition: color 0.2s ease-out; }
         .home .start .homeTitle .homeMenu li a:hover {
           color: white; }
+.home .shoot {
+  /*top: 100%;*/ }
+  .home .shoot .intro {
+    width: 100%;
+    height: 100%; }
+    .home .shoot .intro p {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 20px;
+      line-height: 40px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      display: none;
+      opacity: 0;
+      -webkit-transition: color 0.4s ease-out;
+      -moz-transition: color 0.4s ease-out;
+      transition: color 0.4s ease-out;
+      text-align: center;
+      position: absolute;
+      width: 500px;
+      height: 120px;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0; }
 .home .galery {
-  top: 100%;
-  background: #000; }
+  top: 200%;
+  display: none; }
+.home .word {
+  color: #fff;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: 100;
+  text-align: center;
+  display: none; }
 
 #happyFace {
   position: absolute;
@@ -115,7 +152,7 @@ body {
     width: 47px;
     height: 47px; }
 
-		/*-------------------
+/*-------------------
 	Photo area
 --------------------*/
 #photos {

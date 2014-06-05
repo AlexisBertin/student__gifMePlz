@@ -1,75 +1,97 @@
+$(document).ready(function(){
 
-   $(window).load(function() {
-      $('header').css({
-         'top':'0px',
+   var paraCount = 3;
+   var paraNumber = $('.shoot .intro p').size();
+
+
+
+
+   function showIntro(){
+      var $el = $(".shoot .intro p:nth-child("+paraCount+")"), text = $el.html(),
+         words = text.split(" "), html = "";
+
+      /*for (var i = 0; i < words.length; i++) {
+         html += "<span>" + words[i] + " </span>";
+      }*/
+
+
+      // Try smthg like that bitch
+      for (var i = 0; i < words.length; i++) {
+         if(words[i] == '<span></span>'){
+            html += '<span class="stop"></span>';
+         } else {
+            html += ' <span class="chain">' + words[i] + '</span> ';   
+         }
+      }
+
+
+      $el.html(html);
+
+      $('.shoot .intro p:nth-child('+paraCount+')').css({
+         'display':'block',
          'opacity':'1'
-      });
-      $('footer').animate({'bottom':'0px'});
-      $(".load").delay(500).fadeOut(500);
-      $('#content').fadeIn(500);
-      
-      $('#photos a').click(function(e){
-         return false;
-      });
+      }).addClass("fadeIn");
 
+      /*$el.children().each(function(i){*/
 
+      var spanNumber = $el.children().size();
+      var z = 1;
 
-      /* --- Show Cam --- */
-
-
-
-            
-
-         var openCam = function(){
-            $('#happyFace').die("click",openCam);
-            $('.close').live("click",closeCam);
-
-            $('#happyFace img').fadeOut(200, function(){
-               $('#happyFace').css({
-                  'height':'430px',
-                  'width':'540px',
-                  'cursor':'default'
+      function light(){
+         if($(".shoot .intro p span:nth-child("+z+")").hasClass('stop')){
+            $(".shoot .intro p span:nth-child("+z+")").delay(1000).queue(function(next){
+               $(".shoot .intro p span:nth-child("+z+")").css({
+                  '-webkit-transition': 'color .4s ease-in-out',
+                  '-moz-transition': 'color .4s ease-in-out',
+                  '-ms-transition': 'color .4s ease-in-out',
+                  '-o-transition': 'color .4s ease-in-out',
+                  'transition': 'color .4s ease-in-out',
+                  'color':'rgba(255,255,255,.8)'
                });
-               $('#content').css({
-                  'height':'540px'
-               })
-               $('#camera').delay(300).fadeIn(200);    
+               z++;
+               if(z<=spanNumber){
+                  light();   
+               }
+               
             });
-         };
-
-
-         var closeCam = function(){
-            $('#happyFace').live("click",openCam);
-            $('.close').die("click",closeCam);
-
-            $('#camera').fadeOut(200).css({'display':'none'});
-               $('#happyFace').css({
-                  'height':'47px',
-                  'width':'47px',
-                  'cursor':'pointer'
+         } else if($(".shoot .intro p span:nth-child("+z+")").hasClass('chain')){
+            $(".shoot .intro p span:nth-child("+z+")").delay(200).queue(function(next){
+               $(".shoot .intro p span:nth-child("+z+")").css({
+                  '-webkit-transition': 'color .4s ease-in-out',
+                  '-moz-transition': 'color .4s ease-in-out',
+                  '-ms-transition': 'color .4s ease-in-out',
+                  '-o-transition': 'color .4s ease-in-out',
+                  'transition': 'color .4s ease-in-out',
+                  'color':'rgba(255,255,255,.8)'
                });
-               $('#content').css({
-                  'height':'180px'
-               });
-               $('#happyFace img').fadeIn(200);
-         };
+               z++;
+               if(z<=spanNumber){
+                  light();   
+               }
+            });
+         }
+      }
+      light();
 
 
-
-
-         $('#happyFace').live("click",openCam);
-          
+         /*lightWords(paraCount);*/
          
-         var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', 'UA-34332539-1']);
-         _gaq.push(['_trackPageview']);
-
-         (function() {
-           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
+         /*$('.shoot .intro p:nth-child('+paraCount+')').css({'opacity':'0'}).addClass('fadeOut').removeClass("fadeIn");*/
          
+        /* if(paraCount <= paraNumber){
+            paraCount++;
+            
+         } else {
+            paraCount = 1;
+           
+         }*/
+  /*    setTimeout(function(){
+         lightWords(paraCount);
+      },1000);
+        */ 
 
+   }
 
-   });
+   showIntro();
+
+});

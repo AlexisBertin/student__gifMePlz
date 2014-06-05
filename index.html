@@ -19,6 +19,64 @@
     <!-- <link rel="stylesheet" href="assets/css/foundation.css" /> -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/animation.css" />
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+     <script type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
+     <script type="text/javascript" src="//use.typekit.net/gib4jtx.js"></script>
+     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+     <script type="text/javascript">
+
+        $(window).load(function() {
+            
+
+           $('#photos a').click(function(e){
+              return false;
+           });
+
+           /* --- Show Cam --- */
+
+              var openCam = function(){
+                 $('#happyFace').die("click",openCam);
+                 $('.close').live("click",closeCam);
+
+                 $('#happyFace img').fadeOut(200, function(){
+                    $('#happyFace').css({
+                       'height':'430px',
+                       'width':'540px',
+                       'cursor':'default'
+                    });
+                    $('#content').css({
+                       'height':'540px'
+                    })
+                    $('#camera').delay(300).fadeIn(200);    
+                 });
+              };
+
+
+              var closeCam = function(){
+                 $('#happyFace').live("click",openCam);
+                 $('.close').die("click",closeCam);
+
+                 $('#camera').fadeOut(200).css({'display':'none'});
+                    $('#happyFace').css({
+                       'height':'47px',
+                       'width':'47px',
+                       'cursor':'pointer'
+                    });
+                    $('#content').css({
+                       'height':'180px'
+                    });
+                    $('#happyFace img').fadeIn(200);
+              };
+
+              $('#happyFace').live("click",openCam);
+
+        });
+
+     </script>
 
 </head>
 <body class="home">
@@ -31,32 +89,76 @@
 
 
 	<section class="start row">
-		<div class="homeTitle">
+
+
+		<!-- <div class="homeTitle">
 			<h1>Gif me please</h1>
 			<h2>Soon</h2>
-		<!-- 	<ul class="homeMenu">
+			<ul class="homeMenu">
 				<li><a href="" title="Page des travaux sur lesquels j'ai travaillé">Projets</a></li>
 				<li><a href="" title="Page me présentant">À Propos</a></li>
 				<li><a href="" title="Page pour me contacter">Contact</a></li>
-			</ul> -->
+			</ul>
 
-            <!-- Arrow -->
-		</div>
+            
+		</div> -->
+
+
+
 	</section>
 
-<!-- 
+
+    <section class="shoot row">
+        <div class="intro">
+            <p>Hi.</p>
+
+            <p>Welcome.</p>
+            <p>For this experimence, <span></span> you will be asked to put on your best facial expressions in reaction to the words appearing on your screen.</p>
+
+            <p>There will be 8 words, all related to emotions such as “sadness” or “happiness”.</p>
+
+            <p>They will be displayed one at a time and a picture will automatically be taken before the next word appears.</p>
+
+            <p>Once we have the 8 shots, you will get the chance to make a gif out of them and, if you want, share it on the gifMePlz twitter's account.</p>
+
+
+            <p>The camera block should appear above this text.</p>
+
+            <p>You will have to grant access to your camera to this website (pop-up window at the top of the browser page).</p>
+
+
+            <p>Once your face appears on the video block, you are all set for the experiment to begin. You just have to press the START button and enjoy.</p>
+        </div>
+
+
+
+        <!-- <div id="happyFace">
+            <img src="../assets/img/happyFace.png" alt="smiley type :-)" />
+            <div id="camera">
+                <div id="screen"></div>
+                <div id="buttons">
+                    <div class="buttonPane">
+                        <a id="shootButton" class="normLink" href="" class="blueButton">Shoot !</a>
+                    </div>
+                </div>
+            </div>            
+        </div> -->
+        
+
+
+        <div class="word">Tristesse</div>
+
+    </section>
+
     <section class="galery row">
+        <div id="photos"></div>
 
 
     </section>
- -->
 
     
-
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-	<script type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
-	<script type="text/javascript" src="//use.typekit.net/gib4jtx.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="assets/webcam/webcam.js"></script>
+    <script src="assets/js/shoot.js"></script>
+	
 </body>
 </html>
