@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 
 	webcam.set_swf_url('assets/webcam/webcam.swf');
-	webcam.set_api_url('upload.php');	// The upload script
+	webcam.set_api_url('upload.inc.php');	// The upload script
 	webcam.set_quality(100);				// JPEG Photo Quality
 	webcam.set_shutter_sound(true, 'assets/webcam/shutter.mp3');
 
@@ -136,7 +136,7 @@ $(document).ready(function(){
 	
 	webcam.set_hook('onComplete', function(msg){
 		
-		// This response is returned by upload.php
+		// This response is returned by upload.inc.php
 		// and it holds the name of the image in a
 		// JSON object format:
 		
@@ -161,13 +161,10 @@ $(document).ready(function(){
 		Populating the page with images
 	-------------------------------------*/
 	
-	var start = '';
+	/*var start = '';
 	
 	function loadPics(){
 	
-		// This is true when loadPics is called
-		// as an event handler for the LoadMore button:
-		
 		if(this != window){
 			if($(this).html() == 'Loading..'){
 				// Preventing more than one click
@@ -176,11 +173,8 @@ $(document).ready(function(){
 			$(this).html('Loading..');
 		}
 		
-		// Issuing an AJAX request. The start parameter
-		// is either empty or holds the name of the first
-		// image to be displayed. Useful for pagination:
-		
-		$.getJSON('browse.php',{'start':start},function(r){
+
+		$.getJSON('browse.inc.php',{'start':start},function(r){
 			
 			photos.find('a').show();
 			var loadMore = $('#loadMore').detach();
@@ -197,29 +191,21 @@ $(document).ready(function(){
 				photos.append(templateReplace(template,{src:filename}));
 			});
 
-			// If there is a next page with images:			
 			if(r.nextStart){
-				
-				// r.nextStart holds the name of the image
-				// that comes after the last one shown currently.
+
 				
 				start = r.nextStart;
 				photos.find('a:last').hide();
 				photos.append(loadMore.html('Load More'));
 			}
 			
-			// We have to re-initialize fancybox every
-			// time we add new photos to the page:
-			
 		});
 		
 		return false;
-	}
+	}*/
 
-	// Automatically calling loadPics to
-	// populate the page onload:
 	
-	loadPics();
+	/*loadPics();*/
 	
 
 	/*----------------------

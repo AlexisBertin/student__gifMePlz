@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('connexion.php');
+require('connexion.inc.php');
 
 
 // Reçoit le shoot JPEG du webcam.swf en tant que POST.
@@ -75,7 +75,7 @@ if(!isset($_SESSION['token'])){
 		    $idCurrentUser = $req->fetch(PDO::FETCH_ASSOC);
 
 		       
-		   $sql2 = "INSERT INTO photos (idUser, neutre, haine, joie, degout, tristesse, peur, surprise, douleur) VALUES ('".$idCurrentUser['id']."','".$_SESSION['shootingSession'][0]."','".$_SESSION['shootingSession'][1]."','".$_SESSION['shootingSession'][2]."','".$_SESSION['shootingSession'][3]."','".$_SESSION['shootingSession'][4]."','".$_SESSION['shootingSession'][5]."','".$_SESSION['shootingSession'][6]."','".$_SESSION['shootingSession'][7]."')";
+		   $sql2 = "INSERT INTO photos (idUser, neutral, hate, joy, disgust, sadness, fear, surprise, pain) VALUES ('".$idCurrentUser['id']."','".$_SESSION['shootingSession'][0]."','".$_SESSION['shootingSession'][1]."','".$_SESSION['shootingSession'][2]."','".$_SESSION['shootingSession'][3]."','".$_SESSION['shootingSession'][4]."','".$_SESSION['shootingSession'][5]."','".$_SESSION['shootingSession'][6]."','".$_SESSION['shootingSession'][7]."')";
 		   	try {
 		       	$connexion->exec($sql2);
 		       	

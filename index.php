@@ -1,12 +1,16 @@
+<?php
+session_start();
+require('connexion.inc.php');
+?>
 <!doctype html>
 <html class="no-js" lang="fr">
 <head>
-	<title>Alexis Bertin | Examen PHP</title>
+	<title>GifMePlz | Examen PHP</title>
 
     <meta charset="utf-8" />
-    <meta name="title" content="Alexis Bertin | Développeur Front End" />
+    <meta name="title" content="GifMePlz | Examen PHP" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Alexis Bertin Portfolio. Front End developer." />
+    <meta name="description" content="GifMePlz / gifs with photo shots" />
     <meta name="author" content="Alexis Bertin" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="revised" content="Alexis Bertin, Mai 2014" />
@@ -17,7 +21,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" /> -->
 
     <!-- <link rel="stylesheet" href="assets/css/foundation.css" /> -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" /" "
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/animation.css" />
 
@@ -29,12 +33,36 @@
      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
      <script type="text/javascript">
 
-        $(window).load(function() {
-            
 
-           $('#photos a').click(function(e){
-              return false;
-           });
+        function showOneFace(str) {
+           if (str=="") {
+              $('#photos').html('');
+              return;
+           } 
+           if (window.XMLHttpRequest) {
+              // IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+           } else { // for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+           }
+           xmlhttp.onreadystatechange=function() {
+              if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                 $('#photos').html(xmlhttp.responseText);
+              }
+           }
+           xmlhttp.open("GET","sortPhoto.inc.php?q="+str,true);
+           xmlhttp.send();
+
+        }
+
+
+        $(window).load(function() {
+        
+            showOneFace('0');
+
+            $('#photos a').click(function(e){
+                return false;
+            });
 
            /* --- Show Cam --- */
 
@@ -74,12 +102,27 @@
 
               $('#happyFace').live("click",openCam);
 
+
+
+
         });
+
+
+
+
+           
 
      </script>
 
 </head>
 <body class="home">
+    <header>
+        <h1><a href="index.html">GifMePlz</a></h1>
+        <ul>
+            <li><a href="ux.called.html" title="start the experience">Start</a></li>
+            <li><a href="galery.called.html" title="all the photos">Galery</a></li>
+        </ul>
+    </header>
 
         <video autoplay loop muted poster="assets/ocean/ocean.png" id="bgvid">
             <source src="assets/ocean/ocean.webm" type="video/webm">
@@ -88,73 +131,25 @@
 
 
 
-	<section class="start row">
+	<section class="home row">
 
 
-		<!-- <div class="homeTitle">
 			<h1>Gif me please</h1>
-			<h2>Soon</h2>
+			<!-- <h2>Soon</h2>
 			<ul class="homeMenu">
 				<li><a href="" title="Page des travaux sur lesquels j'ai travaillé">Projets</a></li>
 				<li><a href="" title="Page me présentant">À Propos</a></li>
 				<li><a href="" title="Page pour me contacter">Contact</a></li>
-			</ul>
+			</ul> -->
 
             
-		</div> -->
 
 
 
 	</section>
 
 
-    <section class="shoot row">
-        <div class="intro">
-            <p>Hi.</p>
-
-            <p>Welcome.</p>
-            <p>For this experimence, <span></span> you will be asked to put on your best facial expressions in reaction to the words appearing on your screen.</p>
-
-            <p>There will be 8 words, all related to emotions such as “sadness” or “happiness”.</p>
-
-            <p>They will be displayed one at a time and a picture will automatically be taken before the next word appears.</p>
-
-            <p>Once we have the 8 shots, you will get the chance to make a gif out of them and, if you want, share it on the gifMePlz twitter's account.</p>
-
-
-            <p>The camera block should appear above this text.</p>
-
-            <p>You will have to grant access to your camera to this website (pop-up window at the top of the browser page).</p>
-
-
-            <p>Once your face appears on the video block, you are all set for the experiment to begin. You just have to press the START button and enjoy.</p>
-        </div>
-
-
-
-        <!-- <div id="happyFace">
-            <img src="../assets/img/happyFace.png" alt="smiley type :-)" />
-            <div id="camera">
-                <div id="screen"></div>
-                <div id="buttons">
-                    <div class="buttonPane">
-                        <a id="shootButton" class="normLink" href="" class="blueButton">Shoot !</a>
-                    </div>
-                </div>
-            </div>            
-        </div> -->
-        
-
-
-        <div class="word">Tristesse</div>
-
-    </section>
-
-    <section class="galery row">
-        <div id="photos"></div>
-
-
-    </section>
+    
 
     
     <script src="assets/webcam/webcam.js"></script>

@@ -78,7 +78,8 @@
 
   100% {
     -webkit-transform: translateY(20px);
-    opacity: 0; } }
+    opacity: 0;
+    display: 'none'; } }
 
 @-moz-keyframes moveUp {
   0% {
@@ -87,7 +88,8 @@
 
   100% {
     -webkit-transform: translateY(20px);
-    opacity: 0; } }
+    opacity: 0;
+    display: 'none'; } }
 
 @-o-keyframes moveUp {
   0% {
@@ -96,7 +98,8 @@
 
   100% {
     -webkit-transform: translateY(20px);
-    opacity: 0; } }
+    opacity: 0;
+    display: 'none'; } }
 
 @-ms-keyframes moveUp {
   0% {
@@ -105,7 +108,8 @@
 
   100% {
     -webkit-transform: translateY(20px);
-    opacity: 0; } }
+    opacity: 0;
+    display: 'none'; } }
 
 @keyframes moveUp {
   0% {
@@ -114,4 +118,5 @@
 
   100% {
     -webkit-transform: translateY(20px);
-    opacity: 0; } }
+    opacity: 0;
+    display: 'none'; } }
