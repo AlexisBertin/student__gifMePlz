@@ -125,42 +125,44 @@ body {
   		  background-size: cover;
   }
   */ }
-  .home h1 {
-    position: absolute;
+
+h1 {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 48px;
+  font-size: 36px;
+  line-height: 48px;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.9); }
+
+h2 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.homeMenu li {
+  background: rgba(255, 255, 255, 0.2); }
+  .homeMenu li a {
     display: block;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    height: 48px;
-    font-size: 36px;
-    line-height: 48px;
-    font-weight: 100;
-    color: rgba(255, 255, 255, 0.9); }
-  .home h2 {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
-  .home .homeMenu li {
-    background: rgba(255, 255, 255, 0.2); }
-    .home .homeMenu li a {
-      display: block;
-      float: left;
-      padding: 10px 10px;
-      color: rgba(255, 255, 255, 0.6);
-      /*text-transform: uppercase;*/
-      text-decoration: none;
-      -webkit-transition: color 0.2s ease-out;
-      -moz-transition: color 0.2s ease-out;
-      transition: color 0.2s ease-out; }
-      .home .homeMenu li a:hover {
-        color: white; }
+    float: left;
+    padding: 10px 10px;
+    color: rgba(255, 255, 255, 0.6);
+    /*text-transform: uppercase;*/
+    text-decoration: none;
+    -webkit-transition: color 0.2s ease-out;
+    -moz-transition: color 0.2s ease-out;
+    transition: color 0.2s ease-out; }
+    .homeMenu li a:hover {
+      color: white; }
 
 .shoot {
-  display: none;
   /*top: 100%;*/ }
   .shoot .intro {
     width: 100%;

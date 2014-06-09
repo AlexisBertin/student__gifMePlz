@@ -10,7 +10,7 @@ $(document).ready(function(){
    function showIntro(){
       paraCount++;
       function fadeOut(){
-         $('.shoot .intro p:nth-child('+paraCount+')').delay(2000).queue(function(){
+         $('.shoot .intro p:nth-child('+paraCount+')').delay(1000).queue(function(){
             $(this).css({
                'webkit-transition': 'opacity .2s ease-out',
                '-moz-transition': 'opacity .2s ease-out',
@@ -88,10 +88,8 @@ $(document).ready(function(){
       } 
                
 
-
       var $el = $(".shoot .intro p:nth-child("+paraCount+")"), text = $el.html(),
          words = text.split(" "), html = "";
-
 
       for (var i = 0; i < words.length; i++) {
          if(words[i] == '<span></span>'){
@@ -104,12 +102,9 @@ $(document).ready(function(){
       }
       $el.html(html);
 
-      
 
       var spanNumber = $el.children().size();
       var z = 1;
-
-
       $('.shoot .intro p:nth-child('+paraCount+')').css({
          'display':'block',
          'opacity':'1'
@@ -117,12 +112,11 @@ $(document).ready(function(){
          light();   
       });
 
-      
-   
-      
    }
-   // showIntro();
 
+   showIntro();
+   var audioIntro = $("#audioIntro")[0];
+   audioIntro.play();
 
 
 
