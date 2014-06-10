@@ -125,8 +125,6 @@ $(document).ready(function(){
 	}
 
 
-	
-
 	$('#shootButton').click(function(){
 		$(this).fadeOut();
 		$('.word').html("neutral <span>1 / 8</span>").fadeIn();

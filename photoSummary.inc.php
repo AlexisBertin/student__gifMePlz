@@ -30,20 +30,21 @@ try {
 		$req->execute();
 		$resultsReq = $req->fetchAll(PDO::FETCH_ASSOC);
 
+		$_SESSION['summary'] = array();
 
 		echo '<ul>';
 		foreach($resultsReq as $v1){
 			/*echo '<div class="pic" style="background: url(uploads/thumbs/'.$v1[$photoFace[$q]].');"><span></span></div>';*/
 			for($x=1;$x<9;$x++){
-				echo '<li><div class="delPhoto" onclick="delPhoto('.$x.')"><span class="delete"></span></div><img src="uploads/original/'.$v1[$photoFace[$x]].'"/><span class="photoType">'.ucfirst($photoFace[$x]).'</span></li>';
+				echo '<li><div class="delPhoto" onclick="delPhoto('.$x.')"><span class="delete">Delete this shoot</span></div><img src="uploads/original/'.$v1[$photoFace[$x]].'"/><span class="photoType">'.ucfirst($photoFace[$x]).'</span></li>';
+				$_SESSION['summary'][$x] = $v1[$photoFace[$x]];
 			}
 
 		}
 		echo '</ul>';
 
+		
 
-		session_destroy();
-		unset($_SESSION);
 
 
 	} catch(PDOException $e) {

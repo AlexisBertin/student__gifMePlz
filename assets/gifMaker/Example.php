@@ -45,5 +45,6 @@ $gif = new GIFEncoder	(
         	- FWrite ( FOpen ( "myanimation.gif", "wb" ), $gif->GetAnimation ( ) );
 */
 Header ( 'Content-type:image/gif' );
-echo	$gif->GetAnimation ( );
+/*echo	$gif->GetAnimation ( );*/
+echo FWrite ( FOpen ( "myanimation.gif", "wb" ), $gif->GetAnimation ( ) );
 ?>

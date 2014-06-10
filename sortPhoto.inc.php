@@ -1,4 +1,8 @@
 <?php
+session_destroy();
+unset($_SESSION);
+// Clear de session en cas de back ou de refresh au milieu de l'expérience.
+
 require('connexion.inc.php');
 
 $q = intval($_GET['q']);
@@ -15,7 +19,7 @@ $photoFace = array(
 );
 
 
-$sql = "SELECT idUser, ".$photoFace[$q]." FROM photos";
+$sql = "SELECT idUser, ".$photoFace[$q]." FROM photos ORDER BY idUser DESC";
 try {
 	$req = $connexion->prepare($sql);
 	$req->execute();
@@ -23,7 +27,14 @@ try {
 
 
 	foreach($resultsReq as $v1){
-		echo '<div class="pic" style="background: url(uploads/thumbs/'.$v1[$photoFace[$q]].');"><span></span></div>';
+		if($v1[$photoFace[$q]] != ''){
+			if($q == 0){
+				echo '<img class="pic" src="uploads/gifs/'.$v1[$photoFace[$q]].'" /><span></span>';	
+			} else {
+				echo '<img class="pic" src="uploads/original/'.$v1[$photoFace[$q]].'" /><span></span>';		
+			}	
+		}
+		
 	}
 
 

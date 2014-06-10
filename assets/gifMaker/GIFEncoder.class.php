@@ -71,10 +71,10 @@ Class GIFEncoder {
 				printf	( "%s: %s ( %s )!", $this->VER, $this->ERR [ 'ERR02' ], $GIF_mod );
 				exit	( 0 );
 			}
-			/*if ( substr ( $this->BUF [ $i ], 0, 6 ) != "GIF87a" && substr ( $this->BUF [ $i ], 0, 6 ) != "GIF89a" ) {
+			if ( substr ( $this->BUF [ $i ], 0, 6 ) != "GIF87a" && substr ( $this->BUF [ $i ], 0, 6 ) != "GIF89a" ) {
 				printf	( "%s: %d %s", $this->VER, $i, $this->ERR [ 'ERR01' ] );
 				exit	( 0 );
-			}*/
+			}
 			for ( $j = ( 13 + 3 * ( 2 << ( ord ( $this->BUF [ $i ] { 10 } ) & 0x07 ) ) ), $k = TRUE; $k; $j++ ) {
 				switch ( $this->BUF [ $i ] { $j } ) {
 					case "!":

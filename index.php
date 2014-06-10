@@ -31,89 +31,7 @@ require('connexion.inc.php');
      <script type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
      <script type="text/javascript" src="//use.typekit.net/gib4jtx.js"></script>
      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-     <script type="text/javascript">
-
-
-        function showOneFace(str) {
-           if (str=="") {
-              $('#photos').html('');
-              return;
-           } 
-           if (window.XMLHttpRequest) {
-              // IE7+, Firefox, Chrome, Opera, Safari
-              xmlhttp=new XMLHttpRequest();
-           } else { // for IE6, IE5
-              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-           }
-           xmlhttp.onreadystatechange=function() {
-              if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                 $('#photos').html(xmlhttp.responseText);
-              }
-           }
-           xmlhttp.open("GET","sortPhoto.inc.php?q="+str,true);
-           xmlhttp.send();
-
-        }
-
-
-        $(window).load(function() {
-        
-            showOneFace('0');
-
-            $('#photos a').click(function(e){
-                return false;
-            });
-
-           /* --- Show Cam --- */
-
-              var openCam = function(){
-                 $('#happyFace').die("click",openCam);
-                 $('.close').live("click",closeCam);
-
-                 $('#happyFace img').fadeOut(200, function(){
-                    $('#happyFace').css({
-                       'height':'430px',
-                       'width':'540px',
-                       'cursor':'default'
-                    });
-                    $('#content').css({
-                       'height':'540px'
-                    })
-                    $('#camera').delay(300).fadeIn(200);    
-                 });
-              };
-
-
-              var closeCam = function(){
-                 $('#happyFace').live("click",openCam);
-                 $('.close').die("click",closeCam);
-
-                 $('#camera').fadeOut(200).css({'display':'none'});
-                    $('#happyFace').css({
-                       'height':'47px',
-                       'width':'47px',
-                       'cursor':'pointer'
-                    });
-                    $('#content').css({
-                       'height':'180px'
-                    });
-                    $('#happyFace img').fadeIn(200);
-              };
-
-              $('#happyFace').live("click",openCam);
-
-
-
-
-        });
-
-
-
-
-           
-
-     </script>
-
+ 
 </head>
 <body class="home">
     <header>
@@ -135,25 +53,17 @@ require('connexion.inc.php');
 
 
 			<h1>Gif me please</h1>
-			<!-- <h2>Soon</h2>
-			<ul class="homeMenu">
+			<a class="startButton" href="ux.called.html">Start the Experience</a>
+			<!-- <ul class="homeMenu">
 				<li><a href="" title="Page des travaux sur lesquels j'ai travaillé">Projets</a></li>
 				<li><a href="" title="Page me présentant">À Propos</a></li>
 				<li><a href="" title="Page pour me contacter">Contact</a></li>
 			</ul> -->
-
-            
-
-
-
 	</section>
 
 
     
 
-    
-    <script src="assets/webcam/webcam.js"></script>
-    <script src="assets/js/shoot.js"></script>
 	
 </body>
 </html>

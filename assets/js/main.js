@@ -104,6 +104,8 @@ $(document).ready(function(){
       } 
                
 
+
+      // <span> sur tous les mots & exceptions
       var $el = $(".shoot .intro p:nth-child("+paraCount+")"), text = $el.html(),
          words = text.split(" "), html = "";
 
@@ -118,7 +120,6 @@ $(document).ready(function(){
       }
       $el.html(html);
 
-
       var spanNumber = $el.children().size();
       var z = 1;
       $('.shoot .intro p:nth-child('+paraCount+')').css({
@@ -131,30 +132,64 @@ $(document).ready(function(){
    }
 
 
-   var goOn = true;
-   showIntro();
- 
-   var audioIntro = $("#audioIntro")[0];
-   audioIntro.play();
 
-   $('.soundIcon').addClass('soundIconOn');
-   var soundIcon = true;
 
-   $('.soundIcon').click(function(){
-      if(soundIcon == true){
+   // Intro -> Son on/off & skip
+   if($('body').hasClass('uxBody')){
+      var goOn = true;
+      showIntro();
+      
+      var audioIntro = $("#audioIntro")[0];
+      audioIntro.play();
+
+      $('.soundIcon').addClass('soundIconOn');
+      var soundIcon = true;
+
+      $('.soundIcon').click(function(){
+         if(soundIcon == true){
+            audioIntro.volume = 0;
+            $(this).removeClass('soundIconOn').addClass('soundIconOff');
+            soundIcon = false;
+         } else {
+            audioIntro.volume = 1;
+            $(this).removeClass('soundIconOff').addClass('soundIconOn');
+            soundIcon = true;
+         }   
+      });
+      $('.skipIntro').click(function(){
          audioIntro.volume = 0;
-         $(this).removeClass('soundIconOn').addClass('soundIconOff');
-         soundIcon = false;
-      } else {
-         audioIntro.volume = 1;
-         $(this).removeClass('soundIconOff').addClass('soundIconOn');
-         soundIcon = true;
-      }   
-   });
-   $('.skipIntro').click(function(){
-      audioIntro.volume = 0;
-      goOn = false;
-   });
+         goOn = false;
+      });
+
+
+
+
+
+      // Compiler les photos et convertir en gif.
+      $('.gifThisButton').click(function(){
+         $.ajax({
+            url: 'photoGif.inc.php',
+            cache: false,
+            success: function(html){
+               $('.gifContainer').html(html);
+               $('.photoSummary').css({
+                     'display':'none',
+                     'opacity':'0'
+               });
+               $('.finalGif').hide().queue(function(){
+                     $('.finalGif').css({
+                        'display':'block',
+                        'opacity':'1'
+                     });
+               }).delay(200).fadeIn(200);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+               alert(textStatus);
+            }
+         });
+      });
+   }
+      
 
 
 
