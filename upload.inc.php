@@ -82,8 +82,9 @@ if(!isset($_SESSION['token'])){
 		    } catch(PDOException $e) {
 		   		echo 'erreur: '.$e->getMessage();
 		    }
-		    session_destroy();
-		       unset($_SESSION);
+		    // Session Detruite à l'étape suivante avec photoSummary.inc.php
+		    /*session_destroy();
+		    unset($_SESSION);*/
 		       
 		} catch(PDOException $e) {
 		   echo 'erreur: '.$e->getMessage();
@@ -92,16 +93,11 @@ if(!isset($_SESSION['token'])){
 		
 		
 	} else if($_SESSION['photoCount'] > 8){
-		session_destroy();
-		       unset($_SESSION);
+		// Session Detruite à l'étape suivante avec photoSummary.inc.php
+		/*session_destroy();
+		unset($_SESSION);*/
 	}
 }
-
-
-echo '{"status":1,"message":"Success!","filename":"'.$filename.'"}';
-
-
-
 
 
 

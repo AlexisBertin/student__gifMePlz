@@ -29,10 +29,39 @@
      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
      <script type="text/javascript">
 
+
+         function delPhoto(number){
+               var linkImg = $(".summaryPhotoContainer ul li:nth-child("+number+") img").attr('src');
+               linkImg = linkImg.split('/')[2];
+               var typeImg = $(".summaryPhotoContainer ul li:nth-child("+number+") .photoType").html().toLowerCase();
+               console.log('bienCliqué');
+               console.log("linkImg: "+linkImg);
+               console.log("typeImg: "+typeImg);
+               $.ajax({
+                  url: 'deleteSumPhoto.inc.php',
+                  type: "POST",
+                  data: { linkImg:linkImg, typeImg:typeImg },
+                  cache: false,
+                  success: function(html){
+                     $(".summaryPhotoContainer ul li:nth-child("+number+")").fadeOut();
+                     console.log('BienDelete');
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown){
+                     alert(textStatus);
+                  }
+               });
+            };
      
         $(window).load(function() {
-        
             $('.word, .timer').hide();
+
+            // Delete photo dans le résumé
+
+
+            // Delete photo dans le résumé
+
+            
+
         });
 
     </script>
@@ -86,16 +115,19 @@
          </div>
 
 
-        <!-- <div id="happyFace">
-            <img src="../assets/img/happyFace.png" alt="smiley type :-)" /> -->
-            <div id="camera">
-               <div id="screen"></div>
-               <div id="shootButton">Start</div>
-               <div class="word"></div>
-               <div class="timer">Shoot in <span class="timerCount">3</span></div>
-            </div>            
-        <!-- </div> -->
-        
+
+         <div id="camera">
+            <div id="screen"></div>
+            <div id="shootButton">Start</div>
+            <div class="word"></div>
+            <div class="timer">Shoot in <span class="timerCount">3</span></div>
+         </div>            
+
+        <div class="photoSummary">
+            <h2>Summary</h2>
+            <div class="summaryPhotoContainer">
+            </div>
+        </div>
 
 
 

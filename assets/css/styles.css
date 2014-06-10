@@ -222,6 +222,145 @@ h2 {
       right: 0;
       bottom: 0;
       left: 0; }
+  .shoot #camera {
+    display: none;
+    opacity: 0;
+    width: 520px;
+    height: 370px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto; }
+    .shoot #camera #screen {
+      width: 520px;
+      height: 370px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      background: #ccc; }
+    .shoot #camera #shootButton, .shoot #camera .word {
+      display: block;
+      margin-top: 100px;
+      padding: 10px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 220px auto auto auto;
+      text-align: center;
+      font-weight: 100;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'proxima-nova', sans-serif;
+      font-size: 24px;
+      line-height: 24px; }
+    .shoot #camera #shootButton {
+      cursor: pointer;
+      width: 80px;
+      text-transform: uppercase;
+      border: 1px dotted rgba(255, 255, 255, 0.4);
+      -webkit-transition: border 0.2s ease-out, background 0.2s ease-out;
+      -moz-transition: border 0.2s ease-out, background 0.2s ease-out;
+      transition: border 0.2s ease-out, background 0.2s ease-out;
+      background: rgba(0, 0, 0, 0); }
+      .shoot #camera #shootButton:hover {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8); }
+    .shoot #camera .timer {
+      display: block;
+      margin-top: 100px;
+      padding: 10px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 270px auto auto auto;
+      text-align: center;
+      font-weight: 100;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: 'proxima-nova', sans-serif;
+      text-align: center;
+      font-size: 16px;
+      line-height: 24px; }
+      .shoot #camera .timer span {
+        font-size: 20px; }
+    .shoot #camera .word span {
+      font-weight: 100;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: 'proxima-nova', sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      margin-left: 10px; }
+  .shoot .photoSummary {
+    display: none;
+    opacity: 0; }
+    .shoot .photoSummary .summaryPhotoContainer ul {
+      list-style: none;
+      display: block;
+      min-width: 340px;
+      max-width: 1360px;
+      margin: 200px auto; }
+      .shoot .photoSummary .summaryPhotoContainer ul li {
+        width: 300px;
+        height: 214px;
+        overflow: hidden;
+        float: left;
+        margin: 0 20px 100px 20px;
+        cursor: pointer; }
+        .shoot .photoSummary .summaryPhotoContainer ul li:nth-child(5n) {
+          clear: left;
+          float: left; }
+        .shoot .photoSummary .summaryPhotoContainer ul li .delPhoto {
+          z-index: 200;
+          cursor: pointer;
+          position: absolute;
+          width: 300px;
+          height: 214px;
+          -webkit-transition: opacity 0.2s ease-out;
+          -moz-transition: opacity 0.2s ease-out;
+          transition: opacity 0.2s ease-out;
+          opacity: 0;
+          background: rgba(0, 0, 0, 0.7); }
+          .shoot .photoSummary .summaryPhotoContainer ul li .delPhoto:hover {
+            opacity: 1; }
+          .shoot .photoSummary .summaryPhotoContainer ul li .delPhoto span {
+            font-weight: 100;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'proxima-nova', sans-serif;
+            font-size: 16px;
+            line-height: 24px;
+            display: block;
+            top: 50%;
+            margin-top: -12px;
+            height: 24px;
+            width: 100%;
+            text-align: center; }
+        .shoot .photoSummary .summaryPhotoContainer ul li img {
+          position: absolute;
+          display: block;
+          width: 300px;
+          height: 214px; }
+        .shoot .photoSummary .summaryPhotoContainer ul li .photoType {
+          text-align: center;
+          font-weight: 100;
+          color: #fff;
+          font-family: 'proxima-nova', sans-serif;
+          font-size: 24px;
+          display: block;
+          margin-top: 10px;
+          position: absolute;
+          width: 300px;
+          margin-top: 230px; }
 
 .galery {
   /*top: 200%;*/ }
@@ -269,25 +408,6 @@ h2 {
       float: none;
       clear: left; }
 
-#happyFace {
-  position: absolute;
-  display: block;
-  margin: 6px auto 0 auto;
-  left: 0;
-  right: 0;
-  height: 47px;
-  width: 47px;
-  cursor: pointer;
-  background: #3498db;
-  -moz-transition: height 0.4s ease-out, width 0.4s ease-out;
-  -webkit-transition: height 0.4s ease-out, width 0.4s ease-out;
-  -o-transition: height 0.4s ease-out, width 0.4s ease-out;
-  transition: height 0.4s ease-out, width 0.4s ease-out; }
-  #happyFace img {
-    display: block;
-    width: 47px;
-    height: 47px; }
-
 /*-------------------
 	Photo area
 --------------------*/
@@ -329,95 +449,6 @@ h2 {
 #loadMore:hover {
   color: #fff;
   text-shadow: 0 0 4px #fff; }
-
-/*----------------------
-	Camera slide up
------------------------*/
-#camera {
-  display: none;
-  opacity: 0;
-  width: 520px;
-  height: 370px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto; }
-
-#screen {
-  width: 520px;
-  height: 370px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  background: #ccc; }
-
-#shootButton, .word {
-  display: block;
-  margin-top: 100px;
-  padding: 10px;
-  height: 24px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: 220px auto auto auto;
-  text-align: center;
-  font-weight: 100;
-  text-decoration: none;
-  color: #fff;
-  font-family: 'proxima-nova', sans-serif;
-  text-align: center;
-  font-size: 24px;
-  line-height: 24px; }
-
-#shootButton {
-  cursor: pointer;
-  width: 80px;
-  text-transform: uppercase;
-  border: 1px dotted rgba(255, 255, 255, 0.4);
-  -webkit-transition: border 0.2s ease-out, background 0.2s ease-out;
-  -moz-transition: border 0.2s ease-out, background 0.2s ease-out;
-  transition: border 0.2s ease-out, background 0.2s ease-out;
-  background: rgba(0, 0, 0, 0); }
-  #shootButton:hover {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.8); }
-
-.timer {
-  display: block;
-  margin-top: 100px;
-  padding: 10px;
-  height: 24px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: 270px auto auto auto;
-  text-align: center;
-  font-weight: 100;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
-  font-family: 'proxima-nova', sans-serif;
-  text-align: center;
-  font-size: 16px;
-  line-height: 24px; }
-  .timer span {
-    font-size: 20px; }
-
-.word span {
-  font-weight: 100;
-  color: rgba(255, 255, 255, 0.5);
-  font-family: 'proxima-nova', sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  margin-left: 10px; }
 
 .hidden {
   display: none; }

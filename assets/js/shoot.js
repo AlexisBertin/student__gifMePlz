@@ -53,22 +53,7 @@ $(document).ready(function(){
 	var y = 3;
 	var x = 0;
 
-	function pewpew(x){
-		if(!shootEnabled){
-			return false;
-		}
-		webcam.freeze();
-		togglePane();
-		setTimeout(function(){
-			webcam.upload();
-			webcam.reset();
-			togglePane();
-			setTimeout(function(){
-				x++;
-				photoShoot(x);
-			},300);
-		},500);	
-	}
+	
 	
 	function photoShoot(x){
 		if(x<8){
@@ -92,14 +77,56 @@ $(document).ready(function(){
 					'opacity':'0',
 					'display':'none'
 				});
-				// Affichier les photos, faire le gif, poster ?
+				summary();
 			});
 			x = 0;
 			y = 0;	
 		}
 	};
+	function pewpew(x){
+		if(!shootEnabled){
+			return false;
+		}
+		webcam.freeze();
+		togglePane();
+		setTimeout(function(){
+			webcam.upload();
+			webcam.reset();
+			togglePane();
+			setTimeout(function(){
+				x++;
+				photoShoot(x);
+			},300);
+		},500);	
+	}
+
+	function summary(){
+		$.ajax({
+		   url: 'photoSummary.inc.php',
+		   cache: false,
+		   success: function(html){
+		      $('.summaryPhotoContainer').html(html);
+		   },
+		   error: function(XMLHttpRequest, textStatus, errorThrown){
+		      alert(textStatus);
+		   }
+		});
+
+		$('.photoSummary').hide().queue(function(){
+			$(this).css({
+				'display':'block',
+				'opacity':'1'
+			});
+			$('.photoSummary h2').fadeIn(200,function(){
+				$('.summaryPhotoContainer').fadeIn(200);
+			});
+		});
+
+	}
+
 
 	
+
 	$('#shootButton').click(function(){
 		$(this).fadeOut();
 		$('.word').html("neutral <span>1 / 8</span>").fadeIn();
@@ -107,6 +134,12 @@ $(document).ready(function(){
 		$('.timerCount').html(3);
 		photoShoot(0);
 	});
+
+
+
+
+
+
 
 	
 	$('#cancelButton').click(function(){

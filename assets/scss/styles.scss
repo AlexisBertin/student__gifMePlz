@@ -271,15 +271,184 @@ body {
 				margin: auto;
 				top: 0; right: 0; bottom: 0; left: 0;
 			}
-			
+		}
 
+
+
+		#camera {
+			display: none;
+			opacity: 0;
+
+			width:520px;
+			height:370px;
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+			margin: auto;
+
+
+			#screen{
+				width:520px;
+				height:370px;
+				position: absolute;
+				top: 0; right: 0; bottom: 0; left: 0;
+				margin: auto;
+				background:#ccc;
+			}
+
+
+			#shootButton, .word {
+				display: block;
+				margin-top: 100px;
+				padding: 10px;
+				height: 24px;
+				position: absolute;
+				top: 50%; right: 0; bottom: 0; left: 0;
+				margin: 220px auto auto auto;
+
+				text-align: center;
+				font-weight: 100;
+				text-decoration: none;
+				color: #fff;
+				font-family: 'proxima-nova', sans-serif;
+				font-size: 24px;
+				line-height: 24px;
+			}
+				#shootButton {
+					cursor: pointer;
+					width: 80px;
+					text-transform: uppercase;
+					border: 1px dotted rgba(255,255,255,.4);
+					@include transition(border .2s ease-out, background .2s ease-out);
+					background: rgba(0,0,0,0);
+
+					&:hover {
+						background: rgba(0,0,0,.5);
+						border: 1px solid rgba(255,255,255,.8);
+					}
+				}
+
+
+			.timer {
+				display: block;
+				margin-top: 100px;
+				padding: 10px;
+				height: 24px;
+				position: absolute;
+				top: 50%; right: 0; bottom: 0; left: 0;
+				margin: 270px auto auto auto;
+
+				text-align: center;
+				font-weight: 100;
+				text-decoration: none;
+				color: rgba(255,255,255,.5);
+				font-family: 'proxima-nova', sans-serif;
+				text-align: center;
+				font-size: 16px;
+				line-height: 24px;
+
+				span {
+					font-size: 20px;
+				}
+			}
+
+			.word span {
+				font-weight: 100;
+				color: rgba(255,255,255,.5);
+				font-family: 'proxima-nova', sans-serif;
+				font-size: 16px;
+				line-height: 24px;
+				margin-left: 10px;
+			}
 
 		}
+
+
+		.photoSummary {
+			display: none;
+			opacity: 0;
+			.summaryPhotoContainer {
+				ul {
+					list-style: none;
+					display: block;
+					min-width: 340px;
+					max-width: 1360px;
+					margin: 200px auto;
+
+					li {
+						width: 300px;
+						height: 214px;
+						overflow: hidden;
+						float: left;
+						margin: 0 20px 100px 20px;
+						cursor: pointer;
+
+						&:nth-child(5n){
+							clear: left;
+							float: left;
+						}
+
+						.delPhoto {
+							z-index: 200;
+							cursor: pointer;
+							position: absolute;
+							width: 300px;
+							height: 214px;
+							@include transition(opacity .2s ease-out);
+							opacity: 0;
+							background: rgba(0,0,0,.7);
+							&:hover {
+								opacity: 1;
+							}
+							span {
+								font-weight: 100;
+								color: rgba(255,255,255,.5);
+								font-family: 'proxima-nova', sans-serif;
+								font-size: 16px;
+								line-height: 24px;
+								display: block;
+								top: 50%;
+								margin-top: -12px;
+								height: 24px;
+								width: 100%;
+								text-align: center;
+							}
+						}
+						img {
+							position: absolute;
+							display: block;
+							width: 300px;
+							height: 214px;
+						}
+						.photoType {
+							text-align: center;
+							font-weight: 100;
+							color: #fff;
+							font-family: 'proxima-nova', sans-serif;
+							font-size: 24px;
+							display: block;
+							margin-top: 10px;
+							position: absolute;
+							width: 300px;
+							margin-top: 230px;
+						}
+					}
+				}
+			}
+
+		}
+
+
+	}
+
+
+
+
+
+
 
 	
 
 
-	}
 	.galery {
 		/*top: 200%;*/
 		.photoContent {
@@ -351,32 +520,6 @@ body {
 
 
 
-		#happyFace {
-			position: absolute;
-			display: block;
-			margin: 6px auto 0 auto;
-			left: 0; right: 0;
-			height: 47px;
-			width: 47px;
-			cursor: pointer;
-			background: #3498db;
-
-			-moz-transition: height 0.4s ease-out, width 0.4s ease-out;
-			-webkit-transition: height 0.4s ease-out, width 0.4s ease-out;
-			-o-transition: height 0.4s ease-out, width 0.4s ease-out;
-			transition: height 0.4s ease-out, width 0.4s ease-out;
-			img {
-				display: block;
-				width: 47px;
-				height: 47px;
-			}
-		}
-
-
-
-
-
-
 
 
 
@@ -435,98 +578,6 @@ body {
 
 
 
-
-/*----------------------
-	Camera slide up
------------------------*/
-
-
-#camera{
-	display: none;
-	opacity: 0;
-
-	width:520px;
-	height:370px;
-	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
-	margin: auto;
-}
-
-
-
-#screen{
-	width:520px;
-	height:370px;
-	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
-	margin: auto;
-	background:#ccc;
-}
-
-
-	#shootButton, .word {
-		display: block;
-		margin-top: 100px;
-		padding: 10px;
-		height: 24px;
-		position: absolute;
-		top: 50%; right: 0; bottom: 0; left: 0;
-		margin: 220px auto auto auto;
-
-		text-align: center;
-		font-weight: 100;
-		text-decoration: none;
-		color: #fff;
-		font-family: 'proxima-nova', sans-serif;
-		text-align: center;
-		font-size: 24px;
-		line-height: 24px;
-	}
-		#shootButton {
-			cursor: pointer;
-			width: 80px;
-			text-transform: uppercase;
-			border: 1px dotted rgba(255,255,255,.4);
-			@include transition(border .2s ease-out, background .2s ease-out);
-			background: rgba(0,0,0,0);
-
-			&:hover {
-				background: rgba(0,0,0,.5);
-				border: 1px solid rgba(255,255,255,.8);
-			}
-		}
-
-	.timer {
-		display: block;
-		margin-top: 100px;
-		padding: 10px;
-		height: 24px;
-		position: absolute;
-		top: 50%; right: 0; bottom: 0; left: 0;
-		margin: 270px auto auto auto;
-
-		text-align: center;
-		font-weight: 100;
-		text-decoration: none;
-		color: rgba(255,255,255,.5);
-		font-family: 'proxima-nova', sans-serif;
-		text-align: center;
-		font-size: 16px;
-		line-height: 24px;
-
-		span {
-			font-size: 20px;
-		}
-	}
-
-	.word span {
-		font-weight: 100;
-		color: rgba(255,255,255,.5);
-		font-family: 'proxima-nova', sans-serif;
-		font-size: 16px;
-		line-height: 24px;
-		margin-left: 10px;
-	}
 
 .hidden{
 	display:none;
