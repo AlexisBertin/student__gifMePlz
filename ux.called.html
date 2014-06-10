@@ -1,7 +1,3 @@
-<?php
-session_start();
-require('connexion.inc.php');
-?>
 <!doctype html>
 <html class="no-js" lang="fr">
 <head>
@@ -33,36 +29,10 @@ require('connexion.inc.php');
      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
      <script type="text/javascript">
 
-        function showOneFace(str) {
-           if (str=="") {
-              $('#photos').html('');
-              return;
-           } 
-           if (window.XMLHttpRequest) {
-              // IE7+, Firefox, Chrome, Opera, Safari
-              xmlhttp=new XMLHttpRequest();
-           } else { // for IE6, IE5
-              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-           }
-           xmlhttp.onreadystatechange=function() {
-              if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                 $('#photos').html(xmlhttp.responseText);
-              }
-           }
-           xmlhttp.open("GET","sortPhoto.inc.php?q="+str,true);
-           xmlhttp.send();
-
-        }
-
-
+     
         $(window).load(function() {
         
-            showOneFace('0');
-
-            $('#photos a').click(function(e){
-                return false;
-            });
-
+            $('.word, .timer').hide();
         });
 
     </script>
@@ -85,13 +55,18 @@ require('connexion.inc.php');
   
     <section class="shoot row">
 
+         <div class="introSettings">
+            <div class="soundIcon"></div>
+            <div class="skipIntro">Skip Intro</div>
+         </div>
+
          <audio id="audioIntro">
             <source src="assets/sounds/voiceIntro.mp3"></source>
             <source src="assets/sounds/voiceIntro.ogg"></source>
          </audio>
-        <div class="intro">
-            
 
+         
+         <div class="intro">
             <p>Hi.</p>
 
             <p>Welcome.</p>
@@ -108,24 +83,21 @@ require('connexion.inc.php');
 
 
             <p>Once your face appears on the video block, <span></span> you are all set for the experiment to begin. <span></span> <br/> You just have to press the START button <span></span> and enjoy.</p>
-        </div>
+         </div>
 
 
         <!-- <div id="happyFace">
-            <img src="../assets/img/happyFace.png" alt="smiley type :-)" />
+            <img src="../assets/img/happyFace.png" alt="smiley type :-)" /> -->
             <div id="camera">
-                <div id="screen"></div>
-                <div id="buttons">
-                    <div class="buttonPane">
-                        <a id="shootButton" class="normLink" href="" class="blueButton">Shoot !</a>
-                    </div>
-                </div>
+               <div id="screen"></div>
+               <div id="shootButton">Start</div>
+               <div class="word"></div>
+               <div class="timer">Shoot in <span class="timerCount">3</span></div>
             </div>            
-        </div> -->
+        <!-- </div> -->
         
 
 
-        <div class="word">Tristesse</div>
 
     </section>
     

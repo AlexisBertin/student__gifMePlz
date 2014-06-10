@@ -50,28 +50,62 @@ $(document).ready(function(){
 	    }
 	    return false;
 	});*/
+	var y = 3;
+	var x = 0;
 
-	$('#shootButton').click(function(){
-		var x = 0;
-		var newShot = setInterval(function(){
-			if(x<8){
-				if(!shootEnabled){
-					return false;
-				}
-				webcam.freeze();
-				togglePane();
-				setTimeout(function(){
-					webcam.upload();
-					webcam.reset();
-					togglePane();
-				},200);
+	function pewpew(x){
+		if(!shootEnabled){
+			return false;
+		}
+		webcam.freeze();
+		togglePane();
+		setTimeout(function(){
+			webcam.upload();
+			webcam.reset();
+			togglePane();
+			setTimeout(function(){
 				x++;
-			} else {
-				window.clearInterval(newShot);
-				x = 0;
-			}
-		},2000);
-		return false;
+				photoShoot(x);
+			},300);
+		},500);	
+	}
+	
+	function photoShoot(x){
+		if(x<8){
+			var words = new Array("neutral", "hate", "joy", "disgust", "sadness", "fear", "surprise", "pain");
+			$('.word').html(words[x]+" <span>"+(x+1)+" / 8</span>");
+			y = 3;
+		
+			
+			var timer = setInterval(function(){
+				$('.timerCount').html(y);
+				y--;
+				if(y<0){
+					y = 3;
+					pewpew(x, y);
+					window.clearInterval(timer);
+				} 
+			}, 1000);
+		} else {
+			$('#camera').fadeOut(300,function(){
+				$(this).css({
+					'opacity':'0',
+					'display':'none'
+				});
+				// Affichier les photos, faire le gif, poster ?
+			});
+			x = 0;
+			y = 0;	
+		}
+	};
+
+	
+	$('#shootButton').click(function(){
+		$(this).fadeOut();
+		$('.word').html("neutral <span>1 / 8</span>").fadeIn();
+		$('.timer').fadeIn();
+		$('.timerCount').html(3);
+		photoShoot(0);
 	});
 
 	

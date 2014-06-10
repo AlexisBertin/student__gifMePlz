@@ -1,6 +1,4 @@
 <?php
-header('Content-type: application/json');
-
 require('connexion.inc.php');
 
 $q = intval($_GET['q']);
@@ -25,7 +23,7 @@ try {
 
 
 	foreach($resultsReq as $v1){
-		echo '<div class="pic"><span><img src="uploads/thumbs/'.$v1[$photoFace[$q]].'.jpg" /></span></div>';
+		echo '<div class="pic" style="background: url(uploads/thumbs/'.$v1[$photoFace[$q]].');"><span></span></div>';
 	}
 
 
@@ -34,57 +32,6 @@ try {
 }
 
 
-
-
-/*$perPage = 50;
-*//*$g = glob('uploads/thumbs/*.jpg');
-
-if(!$g){
-	$g = array();
-}
-*/
-/*
-$names = array();
-$modified = array();
-
-
-for($i=0,$z=count($g);$i<$z;$i++){
-	$path = explode('/',$g[$i]);
-	$names[$i] = array_pop($path);
-	
-	$modified[$i] = filemtime($g[$i]);
-}
-
-
-array_multisort($modified,SORT_DESC,$names);
-
-$start = 0;
-
-
-
-if(isset($_GET['start']) && strlen($_GET['start'])>1){
-	$start = array_search($_GET['start'],$names);
-	
-	if($start === false){
-		// Such a picture was not found
-		$start = 0;
-	}
-}
-
-
-
-$nextStart = '';
-
-if($names[$start+$perPage]){
-	$nextStart = $names[$start+$perPage];
-}
-
-$names = array_slice($names,$start,$perPage);
-
-echo json_encode(array(
-	'files' => $names,
-	'nextStart'	=> $nextStart
-));*/
 
 ?>
 

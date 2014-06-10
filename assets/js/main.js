@@ -6,6 +6,19 @@ $(document).ready(function(){
 
 
 
+   function showCamera(){
+      $('.introSettings, .intro').fadeOut(500, function(){
+         $(this).css({
+            'opacity':'0',
+            'display':'none'
+         });
+         $('#camera').hide().css({
+               'opacity':'1',
+               'display':'block'
+         }).fadeIn();
+      });
+   }
+
   
    function showIntro(){
       paraCount++;
@@ -21,9 +34,13 @@ $(document).ready(function(){
             }).dequeue().queue(function(){
                $(this).removeClass('fadeIn');
                var paraNumber = $('.shoot .intro p').size();
-               if(paraCount <= paraNumber){
-                  setTimeout(function(){ showIntro(); },500);
-               }  
+               if(paraCount < paraNumber){
+                  setTimeout(function(){ 
+                     if(goOn == true){ showIntro(); } else { showCamera(); }
+                  },500);
+               } else {
+                  showCamera();
+               }
             });
          }).dequeue();
       }
@@ -41,7 +58,7 @@ $(document).ready(function(){
                });
             });
    
-            fadeOut(); 
+            if(goOn == true){ fadeOut(); } else { showCamera(); }
 
          } else {
             if($(".shoot .intro p:nth-child("+paraCount+") span:nth-child("+z+")").hasClass('stop')){
@@ -56,10 +73,10 @@ $(document).ready(function(){
                   });
                   z++;
                   if(z<=spanNumber){
-                     light();
+                     if(goOn == true){ light(); } else { showCamera(); }
                      return; 
                   } else {
-                     fadeOut();
+                     if(goOn == true){ fadeOut(); } else { showCamera(); }
                   }
                });
             } else if($(".shoot .intro p:nth-child("+paraCount+") span:nth-child("+z+")").hasClass('chain')){
@@ -75,11 +92,10 @@ $(document).ready(function(){
                   
                   z++;
                   if(z<=spanNumber){
-                     light();
+                     if(goOn == true){ light(); } else { showCamera(); }
                      return; 
                   } else {
-                     
-                     fadeOut();
+                     if(goOn == true){ fadeOut(); } else { showCamera(); }
                   }
                });
             }
@@ -109,19 +125,36 @@ $(document).ready(function(){
          'display':'block',
          'opacity':'1'
       }).addClass("fadeIn").delay(200).queue(function(){
-         light();   
+          if(goOn == true){ light(); } else { showCamera(); }
       });
 
    }
 
+
+   var goOn = true;
    showIntro();
+ 
    var audioIntro = $("#audioIntro")[0];
    audioIntro.play();
 
+   $('.soundIcon').addClass('soundIconOn');
+   var soundIcon = true;
 
-
-
-
+   $('.soundIcon').click(function(){
+      if(soundIcon == true){
+         audioIntro.volume = 0;
+         $(this).removeClass('soundIconOn').addClass('soundIconOff');
+         soundIcon = false;
+      } else {
+         audioIntro.volume = 1;
+         $(this).removeClass('soundIconOff').addClass('soundIconOn');
+         soundIcon = true;
+      }   
+   });
+   $('.skipIntro').click(function(){
+      audioIntro.volume = 0;
+      goOn = false;
+   });
 
 
 
