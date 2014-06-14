@@ -16,3 +16,6 @@ En realisant ce/ces scripts, je me suis rendu compte que je m'amusais plus à r�
 
 Ici je me suis plus ou moins "forcé" à arrêter ce projet car il prenait trop de temps sur mon TFE (c.f les commits).
 Par contre, comme je le disais plus haut, il est fort probable que je me remette sur ce projet un peu plus tard pour le finir, donc construire quelque chose de plus solide au niveau de l'UX, de l'UI, de la sécu, ainsi que du but même de cette peut-être future app.
+
+
+http://www.alexisbertin.fr/gifMePlz/
